@@ -13,12 +13,14 @@ function deleteToDo(event){
     const li = event.target.parentElement;
     toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
     li.remove();
+    saveToDos();
 }
 
 function paintToDo(newTodo){
     const li = document.createElement("li");
     const span = document.createElement("span");
     span.innerText = newTodo.text;
+    li.id = newTodo.id;
     const button = document.createElement("button");
     button.innerText="X";
     button.addEventListener("click",deleteToDo)

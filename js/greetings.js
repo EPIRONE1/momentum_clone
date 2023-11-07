@@ -8,22 +8,23 @@ const USERNAME_KEY = "username"
 
 function paintGreetings(){
     const username = localStorage.getItem(USERNAME_KEY);
-    greeting.firstChild.innerText = `Hello ${username}`;
+    greeting.querySelector("h1").innerText = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
+    loginForm.style.display = "none";
 }
 
-function handleLoginBtnClick(event){
+function handleLogin(event){
     event.preventDefault();
-    loginForm.classList.add(HIDDEN_CLASSNAME);
+    loginForm.style.display = "none";
     localStorage.setItem(USERNAME_KEY, loginInput.value);
-   paintGreetings();
+    paintGreetings();   
 }
 
 const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername === null){
-    loginForm.classList.remove(HIDDEN_CLASSNAME);
-    loginForm.addEventListener("submit",handleLoginBtnClick)
+    loginForm.style.display = "flex";
+    loginForm.addEventListener("submit",handleLogin)
 }else {
         paintGreetings();     
 }
