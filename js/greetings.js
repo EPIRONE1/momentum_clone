@@ -2,14 +2,13 @@ const loginForm = document.querySelector("#login-form") ;
 const loginInput = loginForm.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 
-const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username"
 
 
 function paintGreetings(){
     const username = localStorage.getItem(USERNAME_KEY);
     greeting.querySelector("h1").innerText = `Hello ${username}`;
-    greeting.classList.remove(HIDDEN_CLASSNAME);
+    greeting.style.display = "flex";
     loginForm.style.display = "none";
 }
 
@@ -24,6 +23,7 @@ const savedUsername = localStorage.getItem(USERNAME_KEY);
 
 if(savedUsername === null){
     loginForm.style.display = "flex";
+    greeting.style.display = "none";
     loginForm.addEventListener("submit",handleLogin)
 }else {
         paintGreetings();     

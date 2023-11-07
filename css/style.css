@@ -91,6 +91,7 @@ body{
     border:none;
     border-radius: 10px;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 li{
     list-style: none;
