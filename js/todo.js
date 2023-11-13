@@ -2,6 +2,7 @@ const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.querySelector("#todo-list");
 const done = document.querySelector("#done");
+const todoButton = document.querySelector("#todo-button")
 const TODOS_KEY =  "todos"
 
 let toDos = [];
@@ -59,8 +60,19 @@ function handleToDoSubmit(event){
     saveToDos();
 }
 
-done.addEventListener("click",deleteToDo);
-toDoForm.addEventListener("submit",handleToDoSubmit);
+function showTodo(){
+    const div = document.querySelector("#todo-box");
+    const tri = document.querySelector("#todo-box div");
+    if(div.style.display==="none"){
+        div.style.display="flex";
+        tri.style.display="flex";
+    }else{
+        div.style.display="none";
+        tri.style.display="none";
+    }
+}
+
+todoButton.addEventListener("click",showTodo);
 
 const savedToDos = localStorage.getItem(TODOS_KEY);
 

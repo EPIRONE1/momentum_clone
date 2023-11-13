@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/greeting.css">
+    <link rel="stylesheet" href="css/login-form.css">
+    <link rel="stylesheet" href="css/todo.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum-clone</title>
@@ -14,12 +17,6 @@
             <div id="greeting" class="hidden">
                 <span id="clock">00:00:00</span>
                 <h1></h1>
-                <span>Write a To do</span>
-                <form id="todo-form">
-                    <input type="text" required/>
-                </form>
-                    <ul id="todo-list"></ul>
-                    <button id="done">FINISH</button> 
                 <div id="quote">
                     <span></span>
                     <span></span>
@@ -27,7 +24,14 @@
                 <div id="weather">
                     <span style="display: block;"></span>
                     <span></span>
-                
+                </div>  
+                <span id="todo-button">Todo</span>
+                <div id="todo-box">
+                    <span>Today</span>
+                    <span>Add a todo to get started</span>
+                    <button>New Todo</button>
+                    <input type="text" placeholder="New Todo"/>
+                    <div></div>
                 </div>
             </div>
         <script src="js/quotes.js"></script>
