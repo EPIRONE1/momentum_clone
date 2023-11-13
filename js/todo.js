@@ -1,8 +1,9 @@
 const toDoForm = document.getElementById("todo-form");
 const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.querySelector("#todo-list");
-const done = document.querySelector("#done");
+const toDoBox = document.querySelector("#todo-box");
 const todoButton = document.querySelector("#todo-button")
+const newTodoBtn = document.querySelector("#todo-box button");
 const TODOS_KEY =  "todos"
 
 let toDos = [];
@@ -61,23 +62,32 @@ function handleToDoSubmit(event){
 }
 
 function showTodo(){
-    const div = document.querySelector("#todo-box");
     const tri = document.querySelector("#todo-box div");
-    if(div.style.display==="none"){
-        div.style.display="flex";
+    if(toDoBox.style.display==="none"){
+        toDoBox.style.display="flex";
         tri.style.display="flex";
     }else{
-        div.style.display="none";
+        toDoBox.style.display="none";
         tri.style.display="none";
     }
 }
 
-todoButton.addEventListener("click",showTodo);
+function showTodoInput(){
+    toDoForm.style.display = "block";
+    newTodoBtn.style.display = "none";
+    toDoBox.childNodes[3].style.display = "none";
+}
 
+toDoForm.addEventListener("submit",handleToDoSubmit);
+todoButton.addEventListener("click",showTodo);
+newTodoBtn.addEventListener("click",showTodoInput);
 const savedToDos = localStorage.getItem(TODOS_KEY);
 
 if(savedToDos !== null){
     const parsedToDos = JSON.parse(savedToDos);
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
+    toDoForm.style.display = "block";
+    newTodoBtn.style.display = "none";
+    toDoBox.childNodes[3].style.display = "none";
 }
